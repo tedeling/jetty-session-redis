@@ -2,12 +2,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>com.ovea</groupId>
-        <artifactId>ovea</artifactId>
-        <version>2</version>
-    </parent>
-
+    <groupId>com.ovea</groupId>
     <artifactId>jetty-session-redis</artifactId>
     <version>3.0.ga-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -39,6 +34,7 @@
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-nosql</artifactId>
             <version>9.2.3.v20140905</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- jetty classes + runner + jsp stack -->
@@ -116,23 +112,6 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>com.mycila.maven-license-plugin</groupId>
-                <artifactId>maven-license-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>src/main/java/com/ovea/jetty/session/serializer/jboss/**</exclude>
-                        <exclude>src/test/resources/**</exclude>
-                        <exclude>tmp/**</exclude>
-                        <exclude>**/*.ods</exclude>
-                        <exclude>**/.gitignore</exclude>
-                        <exclude>**/jndi.properties</exclude>
-                        <exclude>**/logging.properties</exclude>
-                        <exclude>**/*.js</exclude>
-                        <exclude>**/*.swf</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
             <plugin>
                 <artifactId>maven-shade-plugin</artifactId>
                 <executions>
@@ -217,6 +196,19 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <url>http://nexus.te-con.nl/content/repositories/releases</url>
+        </repository>
+
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Internal Snapshots</name>
+            <url>http://nexus.te-con.nl/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>
 
